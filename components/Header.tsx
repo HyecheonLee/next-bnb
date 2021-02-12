@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import palette from "../styles/palette";
 import ModalPortal from "./ModalPortal";
-import SignUpModal from "./auth/SignUpModal";
+import SignUpModal from "./auths/SignUpModal";
 import useModal from "../hooks/useModal";
 
 const Container = styled.div`
@@ -16,7 +16,7 @@ const Container = styled.div`
   align-items: center;
   padding: 0 80px;
   background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.8) 0px 1px 12px;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 1px 12px;
   z-index: 10;
 
   .header-logo-wrapper {
@@ -99,7 +99,7 @@ const Container = styled.div`
 `;
 
 const Header = () => {
-  const { openModal, ModalPortal } = useModal();
+  const { openModal, ModalPortal, closeModal } = useModal();
   return (
     <Container>
       <Link href="/">
@@ -121,7 +121,7 @@ const Header = () => {
         </button>
       </div>
       <ModalPortal>
-        <SignUpModal />
+        <SignUpModal closeModal={closeModal} />
       </ModalPortal>
     </Container>
   );

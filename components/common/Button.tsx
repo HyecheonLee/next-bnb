@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
-import palette from "../styles/palette";
+import palette from "../../styles/palette";
 
 const Container = styled.button`
   width: 100%;

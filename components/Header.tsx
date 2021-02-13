@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import palette from "../styles/palette";
-import ModalPortal from "./ModalPortal";
+import ModalPortal from "./common/ModalPortal";
 import SignUpModal from "./auths/SignUpModal";
 import useModal from "../hooks/useModal";
 

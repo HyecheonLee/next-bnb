@@ -1,4 +1,4 @@
-import {createGlobalStyle, css} from "styled-components";
+import { createGlobalStyle, css } from "styled-components";
 import reset from "styled-reset";
 import palette from "./palette";
 
@@ -12,7 +12,11 @@ const globalStyle = css`
     font-family: Noto Sans, Noto Sans KR, sans-serif;
     color: ${palette.black};
   }
-`
+  a {
+    text-decoration: none;
+    color: ${palette.black};
+  }
+`;
 
 let GlobalStyle = createGlobalStyle`
   ${globalStyle}

@@ -7,10 +7,12 @@ import {
 } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import common from "./common";
+import auth from "./auth";
 
 const rootReducer = combineReducers({
   common: common.reducer,
   user: user.reducer,
+  auth: auth.reducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

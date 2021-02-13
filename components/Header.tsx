@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import palette from "../styles/palette";
-import ModalPortal from "./common/ModalPortal";
-import SignUpModal from "./auths/SignUpModal";
 import useModal from "../hooks/useModal";
+import { useSelector } from "../store";
+import { useDispatch } from "react-redux";
+import { logoutAPI } from "../lib/api/auth";
+import { userActions } from "../store/user";
+import HeaderAuths from "./HeaderAuths";
+import HeaderUserProfile from "./HeaderUserProfile";
 
 const Container = styled.div`
   position: static;
@@ -36,6 +40,41 @@ const Container = styled.div`
       color: ${palette.dark_cyan};
       display: inline-block;
       margin-left: 6px;
+    }
+
+    & + div {
+      position: relative;
+    }
+  }
+
+  .header-usermenu {
+    position: absolute;
+    right: 0;
+    top: 52px;
+    width: 240px;
+    padding: 8px 0;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+    background-color: white;
+
+    li {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 42px;
+      padding: 0 16px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: ${palette.gray_f7};
+      }
+    }
+
+    .header-usermenu-divider {
+      width: 100%;
+      height: 1px;
+      margin: 8px 0;
+      background-color: ${palette.gray_dd};
     }
   }
 
@@ -96,33 +135,57 @@ const Container = styled.div`
       }
     }
   }
+
+  .header-user-profile {
+    display: flex;
+    align-items: center;
+    height: 42px;
+    padding: 0 6px 0 16px;
+    border: 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+    border-radius: 21px;
+    background-color: white;
+    cursor: pointer;
+    outline: none;
+
+    &:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
+
+    .header-user-profile-image {
+      margin-left: 8px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+  }
 `;
 
 const Header = () => {
-  const { openModal, ModalPortal, closeModal } = useModal();
+  const { isLogged } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const logout = async () => {
+    try {
+      await logoutAPI();
+      dispatch(userActions.initUser());
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
   return (
     <Container>
       <Link href="/">
         <a className="header-logo-wrapper">
-          <img className="header-logo" src="/static/log/logo.jpeg" />
+          <img
+            className="header-logo"
+            src="/static/log/logo.jpeg"
+            alt="header-logo"
+          />
           <span className="header-text">Antte Lee</span>
         </a>
       </Link>
-      <div className="header-auth-button">
-        <button
-          type={"button"}
-          className={"header-sign-up-button"}
-          onClick={openModal}
-        >
-          회원가입
-        </button>
-        <button type={"button"} className={"header-login-button"}>
-          로그인
-        </button>
-      </div>
-      <ModalPortal>
-        <SignUpModal closeModal={closeModal} />
-      </ModalPortal>
+      {!isLogged && <HeaderAuths />}
+      {isLogged && <HeaderUserProfile />}
     </Container>
   );
 };

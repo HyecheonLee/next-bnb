@@ -3,7 +3,6 @@ import styled from "styled-components";
 import palette from "../../styles/palette";
 import CloseXIcon from "../../public/static/svg/modal/modal_colose_x_icon.svg";
 import MailIcon from "../../public/static/svg/auth/mail.svg";
-import PersonIcon from "../../public/static/svg/auth/person.svg";
 import OpenedEyeIcon from "../../public/static/svg/auth/opened_eye.svg";
 import CloseEyeIcon from "../../public/static/svg/auth/closed_eye.svg";
 import Input from "../common/Input";

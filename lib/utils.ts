@@ -10,3 +10,10 @@ export const cookieStringToObject = (cookieString: string | undefined) => {
   }
   return cookies;
 };
+export const getNumber = (string: string) => {
+  const number = string.match(/\d/g)?.join("");
+  if (number) {
+    return Number(number);
+  }
+  return null;
+};

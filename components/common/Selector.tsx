@@ -104,7 +104,7 @@ interface IProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   options?: string[];
   value?: string;
   isValid?: boolean;
-  useValidation?: string;
+  useValidation?: boolean;
   errorMessage?: string;
   type?: "register" | "normal";
   disabledOptions?: string[];

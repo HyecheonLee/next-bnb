@@ -1,15 +1,15 @@
 import React, { FunctionComponent, useMemo } from "react";
 import styled from "styled-components";
-import palette from "../../styles/palette";
-import Selector from "../common/Selector";
+import palette from "../../../styles/palette";
+import Selector from "../../common/Selector";
 import {
   apartmentBuildingTypeList,
   largeBuildingTypeList,
-} from "../../lib/staticData";
-import { useSelector } from "../../store";
+} from "../../../lib/staticData";
+import { useSelector } from "../../../store";
 import { useDispatch } from "react-redux";
-import { registerRoomActions } from "../../store/registerRoom";
-import RadioGroup from "../common/RadioGroup";
+import { registerRoomActions } from "../../../store/registerRoom";
+import RadioGroup from "../../common/RadioGroup";
 import RegisterRoomFooter from "./RegisterRoomFooter";
 
 const Container = styled.div`
@@ -117,42 +117,46 @@ const RegisterRoomBuilding: FunctionComponent = ({ ...props }) => {
   const detailBuildingOptions = useMemo(() => {
     switch (largeBuildingType) {
       case "아파트": {
-        const { apartmentBuildingTypeList } = require("../../lib/staticData");
+        const {
+          apartmentBuildingTypeList,
+        } = require("../../../lib/staticData");
         dispatch(
           registerRoomActions.setBuildingType(apartmentBuildingTypeList[0])
         );
         return apartmentBuildingTypeList;
       }
       case "주택": {
-        const { hostBuildingTypeList } = require("../../lib/staticData");
+        const { hostBuildingTypeList } = require("../../../lib/staticData");
         dispatch(registerRoomActions.setBuildingType(hostBuildingTypeList[0]));
         return hostBuildingTypeList;
       }
       case "별채": {
         const {
           secondaryUnitBuildingTypeList,
-        } = require("../../lib/staticData");
+        } = require("../../../lib/staticData");
         dispatch(
           registerRoomActions.setBuildingType(secondaryUnitBuildingTypeList[0])
         );
         return secondaryUnitBuildingTypeList;
       }
       case "독특한 숙소": {
-        const { uniqueSpaceBuildingTypeList } = require("../../lib/staticData");
+        const {
+          uniqueSpaceBuildingTypeList,
+        } = require("../../../lib/staticData");
         dispatch(
           registerRoomActions.setBuildingType(uniqueSpaceBuildingTypeList[0])
         );
         return uniqueSpaceBuildingTypeList;
       }
       case "B&B": {
-        const { bnbBuildingTypeList } = require("../../lib/staticData");
+        const { bnbBuildingTypeList } = require("../../../lib/staticData");
         dispatch(registerRoomActions.setBuildingType(bnbBuildingTypeList[0]));
         return bnbBuildingTypeList;
       }
       case "부티크호텔": {
         const {
           boutiquesHotelBuildingTypeList,
-        } = require("../../lib/staticData");
+        } = require("../../../lib/staticData");
         dispatch(
           registerRoomActions.setBuildingType(boutiquesHotelBuildingTypeList[0])
         );

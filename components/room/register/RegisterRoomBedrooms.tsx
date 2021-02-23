@@ -11,6 +11,7 @@ import { bedroomCountList } from "../../../lib/staticData";
 import Button from "../../common/Button";
 import RegisterRoomBedTypes from "./RegisterRoomBedTypes";
 import RegisterRoomBedList from "./RegisterRoomBedList";
+import RegisterRoomFooter from "./RegisterRoomFooter";
 
 const Container = styled.div`
   width: 548px;
@@ -131,6 +132,7 @@ const RegisterRoomBedrooms: FunctionComponent<IProps> = ({ ...props }) => {
           onChange={onChangeBedroomCount}
           label="게스트가 사용할 수 있는 침실은 몇 개인가요?"
           options={bedroomCountList}
+          isValid={!!bedroomCount}
         />
       </div>
       <div className="register-room-bed-count-wrapper">
@@ -142,6 +144,11 @@ const RegisterRoomBedrooms: FunctionComponent<IProps> = ({ ...props }) => {
         게스트가 잘 파악할 수 있습니다.
       </p>
       <RegisterRoomBedList />
+      <RegisterRoomFooter
+        prevHref={"/room/register/building"}
+        nextHref={"/room/register/bathroom"}
+        isValid={!!bedroomCount}
+      />
     </Container>
   );
 };

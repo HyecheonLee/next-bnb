@@ -8,8 +8,6 @@ import { registerRoomActions } from "../../../store/registerRoom";
 import Selector from "../../common/Selector";
 import { getNumber } from "../../../lib/utils";
 import { bedroomCountList } from "../../../lib/staticData";
-import Button from "../../common/Button";
-import RegisterRoomBedTypes from "./RegisterRoomBedTypes";
 import RegisterRoomBedList from "./RegisterRoomBedList";
 import RegisterRoomFooter from "./RegisterRoomFooter";
 
